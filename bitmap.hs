@@ -77,5 +77,5 @@ buildPixData pixData = mapM_ buildRow pixData
     putWord8 r
   buildPixel (Pixel16 (r,g,b)) = undefined
   buildPadding (Pixel8 (_,_,_)) count = mapM_ putWord8 (replicate extra 0)
-    where extra = 4 - ((count * 3) `mod` 4)
+    where extra = (4 - ((count * 3) `mod` 4)) `mod` 4
   buildPadding (Pixel16 (_,_,_)) count = undefined
